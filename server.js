@@ -12,13 +12,22 @@ const fs = require("fs");
 const path = require("path");
 const { EquitasDB } = require("./db/equitasdb");
 const { createApiHandler } = require("./lib/api");
+const { MailStore } = require("./mail/store");
+const { SMTPServer } = require("./mail/smtpd");
+const { sendSMTP } = require("./mail/smtp-client");
+const { ERP } = require("./lib/erp");
+const { Daraja } = require("./lib/daraja");
 
 const PORT = Number(process.env.PORT) || 3000;
+const SMTP_PORT = Number(process.env.SMTP_PORT) || 2525; // 25 requires root
 const ROOT = __dirname;
 const PUBLIC_DIR = path.join(ROOT, "public");
 const DATA_DIR = process.env.EQUITAS_DATA_DIR || path.join(ROOT, "data");
 const SEED_DIR = path.join(DATA_DIR, "seed");
 const ADMIN_KEY = process.env.EQUITAS_ADMIN_KEY || "equitas-admin";
+const MAIL_DOMAINS = (process.env.EQUITAS_MAIL_DOMAINS || "equitaslaw.org").split(",");
+const PRIMARY_MAILBOX = "d.i.majanja@equitaslaw.org";
+const MAILBOX_PASSWORD = process.env.EQUITAS_MAIL_PASSWORD || "EquitasMail#2026";
 
 /* ------------------------- database bootstrap ---------------------------- */
 const db = new EquitasDB(DATA_DIR);
@@ -29,7 +38,76 @@ if (seeded.seeded.length) {
     seeded.seeded.map((s) => `${s.collection}(${s.count})`).join(", ")
   );
 }
-const handleApi = createApiHandler(db, { adminKey: ADMIN_KEY });
+
+/* --------------------------- mail bootstrap ------------------------------ */
+const mailStore = new MailStore(db, { domains: MAIL_DOMAINS });
+const box = mailStore.provisionMailbox({
+  address: PRIMARY_MAILBOX,
+  name: "D.I. Majanja",
+  password: MAILBOX_PASSWORD,
+});
+if (box.created) console.log(`[mail] mailbox provisioned: ${box.address}`);
+
+const smtpd = new SMTPServer({ store: mailStore, port: SMTP_PORT });
+smtpd.start()
+  .then((port) => console.log(`[mail] SMTP server listening on port ${port} — accepting for: ${MAIL_DOMAINS.join(", ")}`))
+  .catch((err) => console.warn(`[mail] SMTP server disabled: ${err.message}`));
+
+/* ---------------- business suite: ERP · CRM · POS bootstrap -------------- */
+const erp = new ERP(db, {
+  receivedBy: "admin",
+  config: {
+    seller: {
+      name: "Equitas Law Advocates",
+      pin: process.env.EQUITAS_KRA_PIN || "P051234567X",
+      address: "Equitas House, 5th Floor, Kenyatta Avenue, Nairobi",
+      email: "accounts@equitaslaw.co.ke",
+      phone: "+254 711 000 222",
+    },
+    trustBank: {
+      name: process.env.EQUITAS_TRUST_BANK || "",
+      branch: process.env.EQUITAS_TRUST_BRANCH || "",
+      account: process.env.EQUITAS_TRUST_ACCOUNT || "",
+    },
+  },
+});
+console.log(`[erp] business suite ready — ${erp.clients.count()} clients, ${erp.matters.count()} matters`);
+
+/* --------------------- M-Pesa (Safaricom Daraja) ------------------------- */
+const daraja = new Daraja({
+  env: process.env.MPESA_ENV || "sandbox",
+  consumerKey: process.env.MPESA_CONSUMER_KEY,
+  consumerSecret: process.env.MPESA_CONSUMER_SECRET,
+  shortcode: process.env.MPESA_SHORTCODE,
+  passkey: process.env.MPESA_PASSKEY,
+  callbackUrl: process.env.MPESA_CALLBACK_URL,
+  c2bValidationUrl: process.env.MPESA_C2B_VALIDATION_URL,
+  c2bConfirmationUrl: process.env.MPESA_C2B_CONFIRMATION_URL,
+  initiatorName: process.env.MPESA_INITIATOR_NAME,
+  initiatorPassword: process.env.MPESA_INITIATOR_PASSWORD,
+  securityCredential: process.env.MPESA_SECURITY_CREDENTIAL,
+  certificatePath: process.env.MPESA_CERT_PATH,
+  certificatePem: process.env.MPESA_CERT_PEM,
+});
+const mpesa = daraja.configured;
+console.log(
+  `[mpos] M-Pesa ${mpesa.env} — ` +
+    (mpesa.hasCredentials ? "credentials ✓" : "credentials ✗ (set MPESA_CONSUMER_KEY/SECRET)") +
+    (mpesa.hasShortcode ? " · shortcode ✓" : "") +
+    (mpesa.hasCallback ? " · callback ✓" : "")
+);
+
+const handleApi = createApiHandler(db, {
+  adminKey: ADMIN_KEY,
+  notifyMailbox: PRIMARY_MAILBOX,
+  erp,
+  daraja,
+  mail: {
+    store: mailStore,
+    status: () => smtpd.status(),
+    sendOutbound: (msg) => sendSMTP(msg), // MX lookup via dns, STARTTLS via tls
+  },
+});
 
 /* ------------------------------ MIME types -------------------------------- */
 const MIME = {
@@ -163,6 +241,10 @@ server.listen(PORT, () => {
   console.log(`  │   API       →  http://localhost:${PORT}/api/health    `);
   console.log(`  │   Admin     →  http://localhost:${PORT}/admin.html    `);
   console.log(`  │   Admin key →  ${ADMIN_KEY}                         `);
+  console.log(`  │   SMTP      →  port ${SMTP_PORT} (mail for ${MAIL_DOMAINS[0]})`);
+  console.log(`  │   Mailbox   →  ${PRIMARY_MAILBOX}`);
+  console.log(`  │   Business  →  ERP · CRM · POS (KRA VAT/eTIMS, WHT, trust)`);
+  console.log(`  │   M-Pesa    →  Daraja ${daraja.config.env} (STK · C2B · B2C · QR)`);
   console.log(`  │   Database  →  ${DATA_DIR}`);
   console.log("  └─────────────────────────────────────────────────────┘");
   console.log("");

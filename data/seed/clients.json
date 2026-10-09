@@ -1,0 +1,76 @@
+[
+  {
+    "_id": "client-savannah",
+    "type": "company",
+    "name": "Savannah Logistics Ltd",
+    "email": "legal@savannalogistics.co.ke",
+    "phone": "+254 720 445 118",
+    "address": "Enterprise Road, Industrial Area, Nairobi",
+    "pin": "P051234567X",
+    "registrationNumber": "CPR/2014/155901",
+    "beneficialOwners": [
+      { "name": "Grace Wanjiru Kariuki", "idNumber": "12345678", "holding": 60 },
+      { "name": "Peter Otieno Ouma", "idNumber": "23456789", "holding": 40 }
+    ],
+    "pep": false,
+    "sourceOfFunds": "Trading income — haulage operations",
+    "riskRating": "medium",
+    "riskAssessment": { "score": 2, "rating": "medium" },
+    "status": "active",
+    "kycStatus": "verified",
+    "kycVerifiedAt": "2025-11-03T09:20:00.000Z",
+    "kycVerifiedBy": "admin",
+    "kycDocuments": [
+      { "name": "Certificate of Incorporation", "reference": "CPR/2014/155901", "issuedAt": "2014-08-19", "recordedAt": "2025-11-03T09:20:00.000Z" },
+      { "name": "CR12", "reference": "CR12/2025/88213", "issuedAt": "2025-10-28", "recordedAt": "2025-11-03T09:20:00.000Z" }
+    ],
+    "tags": ["corporate", "retainer"],
+    "notes": "Retained for commercial and employment matters."
+  },
+  {
+    "_id": "client-james-mwangi",
+    "type": "individual",
+    "name": "James Kamau Mwangi",
+    "email": "jk.mwangi@outlook.com",
+    "phone": "+254 733 210 998",
+    "address": "Karen, Nairobi",
+    "pin": "A012345678Z",
+    "idNumber": "87654321",
+    "beneficialOwners": [],
+    "pep": false,
+    "sourceOfFunds": "Salary and property rental",
+    "riskRating": "low",
+    "riskAssessment": { "score": 1, "rating": "low" },
+    "status": "active",
+    "kycStatus": "verified",
+    "kycVerifiedAt": "2025-12-12T14:05:00.000Z",
+    "kycVerifiedBy": "admin",
+    "kycDocuments": [
+      { "name": "National ID", "reference": "87654321", "issuedAt": "2011-02-14", "recordedAt": "2025-12-12T14:05:00.000Z" }
+    ],
+    "tags": ["conveyancing"],
+    "notes": "Purchase of residential property in Kiambu."
+  },
+  {
+    "_id": "client-nia-health",
+    "type": "company",
+    "name": "Nia Health Solutions Ltd",
+    "email": "finance@niahealth.co.ke",
+    "phone": "+254 711 909 340",
+    "address": "Westlands, Nairobi",
+    "pin": "P098765432Y",
+    "registrationNumber": "CPR/2019/332214",
+    "beneficialOwners": [{ "name": "Dr. Amina Yusuf", "idNumber": "34567890", "holding": 100 }],
+    "pep": false,
+    "sourceOfFunds": "Healthcare services revenue",
+    "riskRating": "medium",
+    "riskAssessment": { "score": 2, "rating": "medium" },
+    "status": "active",
+    "kycStatus": "pending",
+    "kycVerifiedAt": null,
+    "kycVerifiedBy": null,
+    "kycDocuments": [],
+    "tags": ["corporate", "ip"],
+    "notes": "Trademark registration and shareholder agreement."
+  }
+]

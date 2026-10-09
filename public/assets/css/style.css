@@ -2107,3 +2107,165 @@ h4 {
     display: none;
   }
 }
+
+/* ---------- 23. Legal documents (privacy / terms) ---------- */
+.legal-doc {
+  max-width: 820px;
+  margin: 0 auto;
+}
+.legal-doc .legal-updated {
+  color: var(--muted);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 2.5rem;
+}
+.legal-doc h2 {
+  font-family: var(--font-display);
+  color: var(--navy-900);
+  font-size: 1.5rem;
+  margin: 2.6rem 0 0.9rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.legal-doc h3 {
+  font-family: var(--font-display);
+  color: var(--navy-800);
+  font-size: 1.15rem;
+  margin: 1.8rem 0 0.6rem;
+}
+.legal-doc p,
+.legal-doc li {
+  color: var(--grey-700);
+  line-height: 1.75;
+  margin-bottom: 0.9rem;
+}
+.legal-doc ul,
+.legal-doc ol {
+  margin: 0 0 1.2rem 1.4rem;
+}
+.legal-doc li {
+  margin-bottom: 0.5rem;
+}
+.legal-doc a {
+  color: var(--brown-500);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.legal-doc strong {
+  color: var(--navy-900);
+}
+.legal-callout {
+  background: var(--grey-50);
+  border-left: 3px solid var(--brown-400);
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 6px 6px 0;
+}
+.legal-callout p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- 24. Business suite (ERP · CRM · POS · M-Pesa) ---------- */
+.suite-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.9rem;
+}
+.suite-tab {
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--grey-600);
+  background: var(--grey-50);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.45rem 1.05rem;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.suite-tab:hover { color: var(--navy-800); border-color: var(--grey-400); }
+.suite-tab.is-active {
+  background: var(--navy-900);
+  border-color: var(--navy-900);
+  color: #fff;
+}
+.suite-view { min-height: 200px; }
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+.kpi {
+  background: var(--grey-50);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.1rem 1.2rem;
+}
+.kpi strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--navy-900);
+  line-height: 1.1;
+}
+.kpi span {
+  display: block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+.suite-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+  background: var(--grey-50);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.1rem;
+  margin-bottom: 1.4rem;
+}
+.suite-form input,
+.suite-form select,
+.suite-form textarea {
+  font: inherit;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #fff;
+  color: var(--ink);
+}
+.suite-form textarea { resize: vertical; min-height: 64px; }
+.suite-form .suite-form-full { grid-column: 1 / -1; }
+.suite-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
+.compliance-list { list-style: none; margin: 0; padding: 0; }
+.compliance-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0.2rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.92rem;
+  color: var(--grey-700);
+}
+.compliance-list li:last-child { border-bottom: 0; }
+.pill-ok, .pill-warn {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.pill-ok { background: #e3f1e8; color: var(--success); }
+.pill-warn { background: #fbe9e6; color: #b23b2e; }
+.mini-note { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; }
+.qr-box { margin-top: 1rem; }
+.qr-box img { max-width: 220px; border: 1px solid var(--line); border-radius: 10px; padding: 0.5rem; background: #fff; }

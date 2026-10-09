@@ -1,0 +1,5 @@
+Contact: mailto:security@equitaslaw.co.ke
+Expires: 2026-12-31T00:00:00.000Z
+Preferred-Languages: en, sw
+Canonical: https://equitaslaw.org/.well-known/security.txt
+Policy: https://equitaslaw.org/terms.html

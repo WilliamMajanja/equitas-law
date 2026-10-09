@@ -15,6 +15,9 @@
 const path = require("path");
 const { EquitasDB } = require("../../db/equitasdb");
 const { createApiHandler } = require("../../lib/api");
+const { MailStore } = require("../../mail/store");
+const { ERP } = require("../../lib/erp");
+const { Daraja } = require("../../lib/daraja");
 
 /* Seed documents are require()d so the Netlify bundler traces and packages
    them deterministically (fs.readFile of data files is not traceable). */
@@ -23,6 +26,7 @@ const SEED = {
   team: require("../../data/seed/team.json"),
   insights: require("../../data/seed/insights.json"),
   testimonials: require("../../data/seed/testimonials.json"),
+  clients: require("../../data/seed/clients.json"),
 };
 
 const DATA_DIR = process.env.EQUITAS_DATA_DIR || path.join("/tmp", "equitasdb");
@@ -35,8 +39,30 @@ function getHandler() {
     handlerPromise = (async () => {
       const db = new EquitasDB(DATA_DIR);
       db.seedObject(SEED);
+      const mailStore = new MailStore(db, { domains: ["equitaslaw.org"] });
+      mailStore.provisionMailbox({
+        address: "d.i.majanja@equitaslaw.org",
+        name: "D.I. Majanja",
+        password: process.env.EQUITAS_MAIL_PASSWORD || "EquitasMail#2026",
+      });
+      const erp = new ERP(db, {
+        receivedBy: "netlify",
+        config: { seller: { pin: process.env.EQUITAS_KRA_PIN || "P051234567X" } },
+      });
+      const daraja = new Daraja({ env: process.env.MPESA_ENV || "sandbox" });
       await db.flush();
-      return createApiHandler(db, { adminKey: ADMIN_KEY });
+      return createApiHandler(db, {
+        adminKey: ADMIN_KEY,
+        notifyMailbox: "d.i.majanja@equitaslaw.org",
+        erp,
+        daraja,
+        mail: {
+          store: mailStore,
+          // Serverless runtimes cannot bind raw TCP ports — no SMTP daemon
+          // and no outbound relay here; local mailbox delivery still works.
+          status: () => ({ running: false, serverless: true, port: null, domains: mailStore.domains }),
+        },
+      });
     })();
   }
   return handlerPromise;

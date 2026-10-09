@@ -1,0 +1,19 @@
+{
+  "name": "Equitas Law — Nairobi Advocates",
+  "short_name": "Equitas Law",
+  "description": "A full-service law firm in Nairobi, Kenya — litigation, corporate, conveyancing, employment, family, IP, banking and tax.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a1a30",
+  "theme_color": "#0a1a30",
+  "lang": "en-KE",
+  "icons": [
+    {
+      "src": "assets/img/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

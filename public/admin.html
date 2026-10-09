@@ -91,6 +91,65 @@
         </div>
       </section>
 
+      <!-- Mail server panel -->
+      <section class="admin-panel" id="mail-panel">
+        <header>
+          <h2>Mail Server — Inbox</h2>
+          <span class="admin-note" style="margin-top:0" id="mail-status">Checking SMTP status…</span>
+        </header>
+        <div class="panel-body">
+          <div class="console-row" style="display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1.2rem">
+            <select id="mail-box-select" aria-label="Mailbox"></select>
+            <button class="btn btn--outline-navy" id="mail-refresh" type="button" style="padding:.65rem 1.5rem">Refresh</button>
+            <button class="btn btn--brown" id="mail-compose-open" type="button" style="padding:.65rem 1.5rem">+ Compose</button>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>From</th>
+                  <th>Subject</th>
+                  <th class="hide-sm">Date</th>
+                  <th class="hide-sm">Dir</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="mail-body">
+                <tr><td colspan="6"><div class="empty-state">Enter the admin key above to open the mailbox.</div></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="admin-note">
+            SMTP daemon listens on <code>port 2525</code> by default (<code>SMTP_PORT</code> env; use 25 in production with
+            privileges). Accepts mail for <code>equitaslaw.org</code> only — relaying is refused.
+          </p>
+        </div>
+      </section>
+
+      <!-- Business suite: ERP · CRM · POS · M-Pesa -->
+      <section class="admin-panel" id="suite-panel">
+        <header>
+          <h2>Business Suite</h2>
+          <span class="admin-note" style="margin-top:0" id="suite-status">Enter the admin key above to load.</span>
+        </header>
+        <div class="panel-body">
+          <div class="suite-tabs" role="tablist">
+            <button class="suite-tab is-active" type="button" data-suite-tab="dashboard">Dashboard</button>
+            <button class="suite-tab" type="button" data-suite-tab="clients">CRM</button>
+            <button class="suite-tab" type="button" data-suite-tab="matters">Matters</button>
+            <button class="suite-tab" type="button" data-suite-tab="invoices">Billing</button>
+            <button class="suite-tab" type="button" data-suite-tab="pos">POS</button>
+            <button class="suite-tab" type="button" data-suite-tab="trust">Trust</button>
+            <button class="suite-tab" type="button" data-suite-tab="mpesa">M-Pesa</button>
+            <button class="suite-tab" type="button" data-suite-tab="reports">Reports</button>
+          </div>
+          <div id="suite-view" class="suite-view">
+            <div class="empty-state">Business suite standby.</div>
+          </div>
+        </div>
+      </section>
+
       <!-- NoSQL query console -->
       <section class="admin-panel query-console">
         <header>
@@ -122,6 +181,52 @@
 
     </div>
   </main>
+
+  <!-- ======================= Mail reader overlay ======================= -->
+  <div class="article-overlay" id="mail-overlay" role="dialog" aria-modal="true" aria-label="Message reader">
+    <div class="article-panel">
+      <button class="article-close" type="button" aria-label="Close message">&times;</button>
+      <div class="mail-message-content">
+        <div class="article-loading">Loading message…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================= Compose overlay ======================= -->
+  <div class="article-overlay" id="compose-overlay" role="dialog" aria-modal="true" aria-label="Compose email">
+    <div class="article-panel">
+      <button class="article-close" type="button" aria-label="Close composer">&times;</button>
+      <h2 style="margin-bottom:1.4rem">New Message</h2>
+      <form id="compose-form">
+        <div class="form-grid">
+          <div class="field">
+            <label for="c-from">From</label>
+            <input id="c-from" name="from" type="email" value="d.i.majanja@equitaslaw.org" readonly />
+          </div>
+          <div class="field">
+            <label for="c-to">To <span class="req">*</span></label>
+            <input id="c-to" name="to" type="email" required placeholder="recipient@example.com" />
+          </div>
+          <div class="field field--full">
+            <label for="c-subject">Subject</label>
+            <input id="c-subject" name="subject" type="text" maxlength="200" placeholder="Subject…" />
+          </div>
+          <div class="field field--full">
+            <label for="c-text">Message <span class="req">*</span></label>
+            <textarea id="c-text" name="text" required placeholder="Write your message…"></textarea>
+          </div>
+          <div class="field field--full">
+            <div class="form-status" role="status"></div>
+          </div>
+          <div class="field field--full">
+            <button class="btn btn--brown" type="submit">Send Message
+              <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <script src="assets/js/main.js" defer></script>
 </body>

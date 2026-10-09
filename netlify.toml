@@ -21,7 +21,7 @@
 [functions]
   node_bundler = "nft"
   # Bundle the NoSQL seed data so the function can bootstrap its database
-  included_files = ["data/seed/**", "db/**", "lib/**"]
+  included_files = ["data/seed/**", "db/**", "lib/**", "mail/**"]
 
 [[headers]]
   for = "/*"
