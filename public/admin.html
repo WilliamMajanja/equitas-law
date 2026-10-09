@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chambers Console | Equitas Law — EquitasDB Admin</title>
+  <meta name="description" content="Equitas Law chambers console — consultation requests and NoSQL database explorer, powered by EquitasDB." />
+  <meta name="theme-color" content="#0a1a30" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body data-admin>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ======================= Header ======================= -->
+  <header class="site-header site-header--solid">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="index.html" aria-label="Equitas Law — home">
+          <svg class="brand-mark" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="24" cy="24" r="22.5" opacity="0.55"/>
+            <circle cx="24" cy="7.5" r="1.8"/>
+            <path d="M24 9.5V37"/>
+            <path d="M10 15h28"/>
+            <path d="M10 15l-4.2 11.5M10 15l4.2 11.5"/>
+            <path d="M4.6 26.5a5.4 5.4 0 0 0 10.8 0z"/>
+            <path d="M38 15l-4.2 11.5M38 15l4.2 11.5"/>
+            <path d="M32.6 26.5a5.4 5.4 0 0 0 10.8 0z"/>
+            <path d="M17 37h14"/>
+            <path d="M14 41h20"/>
+          </svg>
+          <span class="brand-text">
+            <span class="brand-name">Equitas Law</span>
+            <span class="brand-tag">Chambers Console</span>
+          </span>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html">← Back to Site</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="admin-shell">
+    <div class="container">
+
+      <div class="admin-head">
+        <div>
+          <span class="eyebrow">EquitasDB · Zero-Dependency NoSQL</span>
+          <h1>Chambers Console</h1>
+          <p>Consultation requests and database explorer — live from the firm's embedded NoSQL database.</p>
+        </div>
+        <form class="admin-key-form" id="admin-key-form">
+          <input type="password" id="admin-key" placeholder="Admin key" autocomplete="off" aria-label="Admin key" />
+          <button type="submit">Connect</button>
+        </form>
+      </div>
+
+      <!-- Collection stats -->
+      <div class="admin-stats" id="admin-stats">
+        <div class="admin-stat"><strong>…</strong><span>Loading collections</span></div>
+      </div>
+
+      <!-- Consultations panel -->
+      <section class="admin-panel">
+        <header>
+          <h2>Consultation Requests</h2>
+          <span class="admin-note" style="margin-top:0">POST /api/consultations → EquitasDB · sorted by newest</span>
+        </header>
+        <div class="panel-body" style="overflow-x:auto">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Client</th>
+                <th class="hide-sm">Phone</th>
+                <th class="hide-sm">Service</th>
+                <th class="hide-sm">Message</th>
+                <th class="hide-sm">Received</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="consultations-body">
+              <tr><td colspan="7"><div class="empty-state">Loading…</div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- NoSQL query console -->
+      <section class="admin-panel query-console">
+        <header>
+          <h2>NoSQL Query Console</h2>
+          <span class="admin-note" style="margin-top:0">Mongo-style operators: $eq $ne $gt $gte $lt $lte $in $nin $contains $regex $exists · $and $or $not</span>
+        </header>
+        <div class="panel-body">
+          <form id="query-form">
+            <div class="console-row">
+              <select id="query-collection" aria-label="Collection">
+                <option value="practice-areas">practice-areas</option>
+                <option value="team">team</option>
+                <option value="insights">insights</option>
+                <option value="testimonials">testimonials</option>
+                <option value="consultations">consultations</option>
+              </select>
+              <button class="btn btn--outline-navy" type="submit" style="padding:.65rem 1.5rem">Run Query</button>
+            </div>
+            <textarea id="query-input" spellcheck="false" aria-label="Query JSON">{ "category": { "$regex": "law" } }</textarea>
+          </form>
+          <div class="query-result" id="query-result">Results will appear here as JSON…</div>
+          <p class="admin-note">
+            Examples — try <code>{ "order": { "$lte": 3 } }</code> on practice-areas,
+            <code>{ "stars": 5 }</code> on testimonials, or
+            <code>{ "$or": [ { "role": { "$regex": "Partner" } }, { "initials": "DM" } ] }</code> on team.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

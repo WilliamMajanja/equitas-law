@@ -1,0 +1,6 @@
+node_modules/
+.netlify/
+# Runtime database files (seed data under data/seed/ IS committed)
+data/*.json
+data/*.tmp
+!data/seed/

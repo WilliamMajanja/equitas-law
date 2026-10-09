@@ -1,0 +1,38 @@
+[
+  {
+    "_id": "ts-jm",
+    "name": "James Mwangi",
+    "context": "Property Developer, Ruiru",
+    "initials": "JM",
+    "stars": 5,
+    "quote": "Equitas untangled a title dispute that had stalled our development for two years. Their conveyancing team is simply on another level.",
+    "order": 1
+  },
+  {
+    "_id": "ts-ln",
+    "name": "Linda N. Achieng",
+    "context": "CEO, Lakeview Logistics Ltd",
+    "initials": "LA",
+    "stars": 5,
+    "quote": "They restructured our entire contract base and stood with us through a tough arbitration. Commercially sharp, technically superb.",
+    "order": 2
+  },
+  {
+    "_id": "ts-pk",
+    "name": "Peter K. Njoroge",
+    "context": "Private Client, Nairobi",
+    "initials": "PN",
+    "stars": 5,
+    "quote": "In a painful succession matter, the team combined genuine humanity with formidable legal skill. Our family could not have asked for more.",
+    "order": 3
+  },
+  {
+    "_id": "ts-sw",
+    "name": "Sarah W. Wanjiru",
+    "context": "Founder, Kilimani Tech Hub",
+    "initials": "SW",
+    "stars": 5,
+    "quote": "Our shareholders' agreement, our trade marks, our data-protection compliance — Equitas built the legal backbone of our startup.",
+    "order": 4
+  }
+]

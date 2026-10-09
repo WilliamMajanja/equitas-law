@@ -1,0 +1,82 @@
+[
+  {
+    "_id": "pa-litigation",
+    "slug": "litigation",
+    "icon": "gavel",
+    "title": "Litigation & Dispute Resolution",
+    "tagline": "Fearless representation before all Kenyan courts and tribunals.",
+    "description": "We try cases to win. Our advocates appear daily before the Magistracy, the High Court, the Court of Appeal and specialised tribunals, and we pair that courtroom muscle with arbitration, mediation and hard-nosed negotiation when a quieter route serves you better.",
+    "tags": ["Civil & Commercial Suits", "Arbitration & Mediation", "Constitutional Petitions", "Debt Recovery", "Appeals"],
+    "order": 1
+  },
+  {
+    "_id": "pa-corporate",
+    "slug": "corporate",
+    "icon": "briefcase",
+    "title": "Corporate & Commercial Law",
+    "tagline": "Counsel for businesses at every stage of growth.",
+    "description": "From incorporation and governance to shareholders' agreements, joint ventures, mergers and regulatory compliance, we structure transactions that protect your interests and keep your enterprise moving.",
+    "tags": ["Company Formation", "Governance & Secretarial", "Mergers & Acquisitions", "Commercial Contracts", "Regulatory Compliance"],
+    "order": 2
+  },
+  {
+    "_id": "pa-conveyancing",
+    "slug": "conveyancing",
+    "icon": "building",
+    "title": "Conveyancing & Real Estate",
+    "tagline": "Watertight property transactions, every time.",
+    "description": "Sales, purchases, leases, transfers, charges, discharges and exhaustive due diligence across all land registries. We act for individuals, developers, diaspora investors and financial institutions.",
+    "tags": ["Sale & Purchase Agreements", "Title Due Diligence", "Leases & Tenancies", "Charges & Securities", "Off-Plan Developments"],
+    "order": 3
+  },
+  {
+    "_id": "pa-employment",
+    "slug": "employment",
+    "icon": "users",
+    "title": "Employment & Labour Law",
+    "tagline": "Balanced counsel for employers and employees.",
+    "description": "Contracts, HR policies, disciplinary processes, redundancy programmes, union negotiations and Employment & Labour Relations Court disputes — pragmatic advice that keeps workplaces fair and compliant.",
+    "tags": ["Employment Contracts", "HR Policies & Handbooks", "Disciplinary & Termination", "Redundancies", "ELRC Litigation"],
+    "order": 4
+  },
+  {
+    "_id": "pa-family",
+    "slug": "family",
+    "icon": "heart",
+    "title": "Family Law & Succession",
+    "tagline": "Discretion and compassion when it matters most.",
+    "description": "Divorce, custody, maintenance, adoption, wills, trusts, probate and estate administration. We protect the people you love and the legacy you have built with sensitivity and resolve.",
+    "tags": ["Divorce & Separation", "Child Custody & Maintenance", "Wills & Trusts", "Probate & Administration", "Estate Planning"],
+    "order": 5
+  },
+  {
+    "_id": "pa-ip",
+    "slug": "ip",
+    "icon": "bulb",
+    "title": "Intellectual Property & Technology",
+    "tagline": "Protecting the ideas that power your enterprise.",
+    "description": "Trade marks, copyrights, patents, industrial designs, licensing, software agreements and data-protection compliance under the Data Protection Act, 2019 — from registration to enforcement.",
+    "tags": ["Trade Mark Registration", "Copyright & Licensing", "Software & SaaS Agreements", "Data Protection", "IP Enforcement"],
+    "order": 6
+  },
+  {
+    "_id": "pa-banking",
+    "slug": "banking",
+    "icon": "bank",
+    "title": "Banking & Finance",
+    "tagline": "Precision drafting for lenders and borrowers.",
+    "description": "Facility agreements, securities perfection, syndicated lending, microfinance regulation and financial-services compliance. We speak the language of term sheets and the language of courts.",
+    "tags": ["Loan & Facility Documentation", "Securities & Perfection", "Financial Regulation", "Microfinance & SACCOs", "Restructuring"],
+    "order": 7
+  },
+  {
+    "_id": "pa-tax",
+    "slug": "tax",
+    "icon": "scale",
+    "title": "Tax & Regulatory Advisory",
+    "tagline": "Clarity in a complex fiscal landscape.",
+    "description": "Tax planning, KRA audits and objections, Tax Appeals Tribunal representation, and sector-specific regulatory licensing. We turn statutory complexity into practical, defensible positions.",
+    "tags": ["Tax Planning", "KRA Audits & Objections", "Tax Appeals Tribunal", "Regulatory Licensing", "Transfer Pricing"],
+    "order": 8
+  }
+]

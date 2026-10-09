@@ -1,0 +1,37 @@
+# Equitas Law — Netlify configuration
+# Zero-dependency static site + one zero-dependency serverless function
+# (the same EquitasDB NoSQL engine and API handler used by server.js).
+
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+# Route API calls to the serverless function
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+# Pretty 404
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+[functions]
+  node_bundler = "nft"
+  # Bundle the NoSQL seed data so the function can bootstrap its database
+  included_files = ["data/seed/**", "db/**", "lib/**"]
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

@@ -1,0 +1,17 @@
+{
+  "name": "equitas-law",
+  "version": "1.0.0",
+  "description": "Equitas Law — zero-dependency legal services website with a built-in zero-dependency NoSQL database (EquitasDB).",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node test/run-tests.js"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "license": "MIT"
+}

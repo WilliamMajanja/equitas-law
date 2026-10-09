@@ -1,0 +1,62 @@
+[
+  {
+    "_id": "tm-diana-mwangi",
+    "name": "Diana A. Mwangi",
+    "initials": "DM",
+    "role": "Managing Partner",
+    "bio": "An Advocate of the High Court of Kenya with over 18 years at the Bar, Diana leads the firm's litigation and dispute resolution practice and has argued landmark commercial and constitutional matters.",
+    "credentials": "LL.B (Nairobi) · LL.M (UON) · Advocate, High Court of Kenya · CIArb (Associate)",
+    "practiceAreas": ["litigation", "corporate"],
+    "order": 1
+  },
+  {
+    "_id": "tm-brian-otieno",
+    "name": "Brian K. Otieno",
+    "initials": "BO",
+    "role": "Senior Partner",
+    "bio": "Brian heads the corporate and commercial department, advising SMEs, listed companies and foreign investors on transactions, governance and regulatory strategy across East Africa.",
+    "credentials": "LL.B (Moi) · MBA (Strathmore) · Certified Public Secretary · Notary Public",
+    "practiceAreas": ["corporate", "banking"],
+    "order": 2
+  },
+  {
+    "_id": "tm-faith-kamau",
+    "name": "Faith W. Kamau",
+    "initials": "FK",
+    "role": "Partner — Conveyancing",
+    "bio": "Faith has closed over 900 property transactions and leads the firm's real estate and conveyancing desk, with particular expertise in off-plan developments and diaspora investments.",
+    "credentials": "LL.B (Kenyatta) · Dip. Law (KSL) · Commissioner for Oaths",
+    "practiceAreas": ["conveyancing", "family"],
+    "order": 3
+  },
+  {
+    "_id": "tm-daniel-kiprop",
+    "name": "Daniel M. Kiprop",
+    "initials": "DK",
+    "role": "Senior Associate",
+    "bio": "Daniel advises on employment, pensions and labour relations, representing both employers and employees before the Employment & Labour Relations Court.",
+    "credentials": "LL.B (Egerton) · Dip. Law (KSL) · Certified Professional Mediator",
+    "practiceAreas": ["employment", "litigation"],
+    "order": 4
+  },
+  {
+    "_id": "tm-aisha-mohamed",
+    "name": "Aisha S. Mohamed",
+    "initials": "AM",
+    "role": "Senior Associate",
+    "bio": "Aisha leads the intellectual property and technology practice, guiding startups and creatives through trade marks, licensing and data-protection compliance.",
+    "credentials": "LL.B (UON) · LL.M IP & IT Law · KIPI-recognised IP Agent",
+    "practiceAreas": ["ip", "corporate"],
+    "order": 5
+  },
+  {
+    "_id": "tm-victor-nyambura",
+    "name": "Victor O. Nyambura",
+    "initials": "VN",
+    "role": "Associate — Tax & Regulatory",
+    "bio": "Victor focuses on tax advisory and disputes, representing clients in KRA audits, objections and before the Tax Appeals Tribunal.",
+    "credentials": "LL.B (Kabarak) · CPA (K) · Tax Appeals Tribunal practitioner",
+    "practiceAreas": ["tax", "banking"],
+    "order": 6
+  }
+]
