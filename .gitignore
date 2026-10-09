@@ -1,8 +1,33 @@
+# The stack is zero-dependency — ignore any accidental installs
 node_modules/
+
+# Netlify local build artifacts
 .netlify/
+netlify/functions/*.zip
+netlify/functions/manifest.json
+
 # Runtime database files (seed data under data/seed/ IS committed)
 data/*.json
 data/*.tmp
 !data/seed/
-netlify/functions/*.zip
-netlify/functions/manifest.json
+
+# Environment / secrets (never commit real credentials)
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+logs/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.tmp
+
+# Coverage output
+coverage/
