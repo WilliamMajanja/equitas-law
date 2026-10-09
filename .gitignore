@@ -4,3 +4,5 @@ node_modules/
 data/*.json
 data/*.tmp
 !data/seed/
+netlify/functions/*.zip
+netlify/functions/manifest.json
